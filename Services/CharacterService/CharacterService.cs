@@ -23,5 +23,13 @@ namespace dotnet_rpg.Services.CharacterService
 
             return serviceResponse;
         }
+
+        public async Task<ServiceResponse<GetCharacterResponseDto>> GetCharacterById(int id)
+        {
+            var serviceResponse = new ServiceResponse<GetCharacterResponseDto>();
+            serviceResponse.Data = _mapper.Map<GetCharacterResponseDto>(await _context.Characters.FirstOrDefaultAsync(c => c.Id == id));
+
+            return serviceResponse;
+        }
     }
 }

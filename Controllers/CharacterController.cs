@@ -22,5 +22,11 @@ namespace dotnet_rpg.Controllers
         {
             return Ok(await _characterService.GetAllCharacters());
         }
+
+        [HttpGet("{id}")]
+        public async Task<ActionResult<ServiceResponse<GetCharacterResponseDto>>> GetSingle(int id)
+        {
+            return Ok(await _characterService.GetCharacterById(id));
+        }
     }
 }
