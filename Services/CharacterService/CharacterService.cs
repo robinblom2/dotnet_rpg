@@ -40,8 +40,53 @@ namespace dotnet_rpg.Services.CharacterService
         public async Task<ServiceResponse<GetCharacterResponseDto>> GetCharacterById(int id)
         {
             var serviceResponse = new ServiceResponse<GetCharacterResponseDto>();
-            serviceResponse.Data = _mapper.Map<GetCharacterResponseDto>(await _context.Characters.FirstOrDefaultAsync(c => c.Id == id));
 
+            try
+            {
+                var character = await _context.Characters.FirstOrDefaultAsync(c => c.Id == id);
+
+                if (character == null)
+                {
+                    throw new Exception($"Character with Id: {id} not found.");
+                }
+
+                serviceResponse.Data = _mapper.Map<GetCharacterResponseDto>(character);
+                serviceResponse.Success = true;
+            }
+            catch (Exception ex)
+            {
+                serviceResponse.Success = false;
+                serviceResponse.Message = ex.Message;
+            }
+
+
+            return serviceResponse;
+        }
+
+        public async Task<ServiceResponse<GetCharacterResponseDto>> UpdateCharacter(UpdateCharacterRequestDto updatedCharacter)
+        {
+            var serviceResponse = new ServiceResponse<GetCharacterResponseDto>();
+
+            try
+            {
+                var character = await _context.Characters.FirstOrDefaultAsync(c => c.Id == updatedCharacter.Id);
+
+                if (character == null)
+                {
+                    throw new Exception($"Character with Id: {updatedCharacter.Id} not found.");
+                }
+                _mapper.Map(updatedCharacter, character);
+                await _context.SaveChangesAsync();
+
+                serviceResponse.Data = _mapper.Map<GetCharacterResponseDto>(character);
+                serviceResponse.Success = true;
+                serviceResponse.Message = "Character updated successfully.";
+            }
+            catch (Exception ex)
+            {
+                serviceResponse.Success = false;
+                serviceResponse.Message = ex.Message;
+            }
             return serviceResponse;
         }
     }
