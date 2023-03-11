@@ -5,6 +5,9 @@ global using AutoMapper;
 global using dotnet_rpg.Configurations;
 global using Microsoft.EntityFrameworkCore;
 global using dotnet_rpg.Data;
+global using Microsoft.AspNetCore.Mvc;
+global using dotnet_rpg.Services.AuthService;
+global using dotnet_rpg.Dtos.User;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -18,6 +21,7 @@ builder.Services.AddSwaggerGen();
 builder.Services.AddAutoMapper(typeof(MapperConfig));
 
 builder.Services.AddScoped<ICharacterService, CharacterService>();
+builder.Services.AddScoped<IAuthRepository, AuthRepository>();
 
 var app = builder.Build();
 

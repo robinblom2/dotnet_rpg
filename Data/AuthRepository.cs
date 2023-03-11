@@ -39,6 +39,7 @@ namespace dotnet_rpg.Services.AuthService
             await _context.SaveChangesAsync();
 
             response.Data = user.Id;
+            response.Message = "User created successfully.";
 
             return response;
         }
