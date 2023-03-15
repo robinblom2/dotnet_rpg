@@ -41,7 +41,7 @@ namespace dotnet_rpg.Services.CharacterService
 
             try
             {
-                var character = await _context.Characters.FirstOrDefaultAsync(c => c.Id == id);
+                var character = await _context.Characters.FirstOrDefaultAsync(c => c.Id == id && c.User!.Id == GetUserId());
 
                 if (character is null)
                 {
@@ -51,7 +51,7 @@ namespace dotnet_rpg.Services.CharacterService
                 _context.Characters.Remove(character);
                 await _context.SaveChangesAsync();
 
-                serviceResponse.Data = _mapper.Map<List<GetCharacterResponseDto>>(await _context.Characters.ToListAsync());
+                serviceResponse.Data = _mapper.Map<List<GetCharacterResponseDto>>(await _context.Characters.Where(c => c.User!.Id == GetUserId()).ToListAsync());
                 serviceResponse.Success = true;
                 serviceResponse.Message = "Character deleted successfully.";
             }
@@ -78,7 +78,7 @@ namespace dotnet_rpg.Services.CharacterService
 
             try
             {
-                var character = await _context.Characters.FirstOrDefaultAsync(c => c.Id == id);
+                var character = await _context.Characters.FirstOrDefaultAsync(c => c.Id == id && c.User!.Id == GetUserId());
 
                 if (character == null)
                 {
