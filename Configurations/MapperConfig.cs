@@ -1,8 +1,3 @@
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
-
 namespace dotnet_rpg.Configurations
 {
     public class MapperConfig : Profile
@@ -12,6 +7,8 @@ namespace dotnet_rpg.Configurations
             CreateMap<Character, AddCharacterRequestDto>().ReverseMap();
             CreateMap<Character, GetCharacterResponseDto>().ReverseMap();
             CreateMap<Character, UpdateCharacterRequestDto>().ReverseMap();
+            CreateMap<Weapon, AddWeaponRequestDto>().ReverseMap();
+            CreateMap<Weapon, GetWeaponResponseDto>().ReverseMap();
         }
     }
 }

@@ -11,11 +11,11 @@ namespace dotnet_rpg.Controllers
     [Authorize]
     [ApiController]
     [Route("api/[controller]")]
-    public class CharacterController : ControllerBase
+    public class CharactersController : ControllerBase
     {
         private readonly ICharacterService _characterService;
 
-        public CharacterController(ICharacterService characterService)
+        public CharactersController(ICharacterService characterService)
         {
             _characterService = characterService;
         }

@@ -8,10 +8,14 @@ global using dotnet_rpg.Data;
 global using Microsoft.AspNetCore.Mvc;
 global using dotnet_rpg.Services.AuthService;
 global using dotnet_rpg.Dtos.User;
-using Microsoft.AspNetCore.Authentication.JwtBearer;
-using Microsoft.IdentityModel.Tokens;
-using Swashbuckle.AspNetCore.Filters;
-using Microsoft.OpenApi.Models;
+global using dotnet_rpg.Dtos.Weapon;
+global using Microsoft.AspNetCore.Authentication.JwtBearer;
+global using Microsoft.IdentityModel.Tokens;
+global using Swashbuckle.AspNetCore.Filters;
+global using Microsoft.OpenApi.Models;
+global using dotnet_rpg.Services.WeaponService;
+global using Microsoft.AspNetCore.Authorization;
+global using System.Security.Claims;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -22,6 +26,7 @@ builder.Services.AddControllers();
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddAutoMapper(typeof(MapperConfig));
 builder.Services.AddScoped<ICharacterService, CharacterService>();
+builder.Services.AddScoped<IWeaponService, WeaponService>();
 builder.Services.AddScoped<IAuthRepository, AuthRepository>();
 
 builder.Services.AddSwaggerGen(config =>
