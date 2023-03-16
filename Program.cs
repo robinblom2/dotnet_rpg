@@ -16,6 +16,7 @@ global using Microsoft.OpenApi.Models;
 global using dotnet_rpg.Services.WeaponService;
 global using Microsoft.AspNetCore.Authorization;
 global using System.Security.Claims;
+global using dotnet_rpg.Dtos.Skill;
 
 var builder = WebApplication.CreateBuilder(args);
 
