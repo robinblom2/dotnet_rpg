@@ -17,6 +17,7 @@ global using dotnet_rpg.Services.WeaponService;
 global using Microsoft.AspNetCore.Authorization;
 global using System.Security.Claims;
 global using dotnet_rpg.Dtos.Skill;
+global using dotnet_rpg.Services.FightService;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -29,6 +30,7 @@ builder.Services.AddAutoMapper(typeof(MapperConfig));
 builder.Services.AddScoped<ICharacterService, CharacterService>();
 builder.Services.AddScoped<IWeaponService, WeaponService>();
 builder.Services.AddScoped<IAuthRepository, AuthRepository>();
+builder.Services.AddScoped<IFightService, FightService>();
 
 builder.Services.AddSwaggerGen(config =>
 {

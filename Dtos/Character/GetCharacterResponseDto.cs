@@ -17,5 +17,9 @@ namespace dotnet_rpg.Dtos.Character
 
         public GetWeaponResponseDto? Weapon { get; set; }
         public List<GetSkillResponseDto>? Skills { get; set; }
+
+        public int Fights { get; set; }
+        public int Victories { get; set; }
+        public int Defeats { get; set; }
     }
 }
