@@ -18,6 +18,7 @@ global using Microsoft.AspNetCore.Authorization;
 global using System.Security.Claims;
 global using dotnet_rpg.Dtos.Skill;
 global using dotnet_rpg.Services.FightService;
+global using dotnet_rpg.Dtos.Fight;
 
 var builder = WebApplication.CreateBuilder(args);
 
