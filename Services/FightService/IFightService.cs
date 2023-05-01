@@ -11,5 +11,7 @@ namespace dotnet_rpg.Services.FightService
         Task<ServiceResponse<AttackResultResponseDto>> SkillAttack(SkillAttackRequestDto request);
 
         Task<ServiceResponse<FightResultResponseDto>> Fight(FightRequestDto request);
+
+        Task<ServiceResponse<List<HighscoreResponseDto>>> GetHighscore();
     }
 }

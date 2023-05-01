@@ -10,6 +10,7 @@ namespace dotnet_rpg.Configurations
             CreateMap<Weapon, AddWeaponRequestDto>().ReverseMap();
             CreateMap<Weapon, GetWeaponResponseDto>().ReverseMap();
             CreateMap<Skill, GetSkillResponseDto>().ReverseMap();
+            CreateMap<Character, HighscoreResponseDto>().ReverseMap();
         }
     }
 }
